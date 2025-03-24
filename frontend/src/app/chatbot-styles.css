@@ -41,6 +41,10 @@
     height: 86%;
 }
 
+.react-chatbot-kit-chat-bot-message {
+    width: 70%;
+}
+
 /* Change user message bubbles */
 .react-chatbot-kit-chat-message-container .react-chatbot-kit-user-chat-message {
     background-color: #ebebeb; 
