@@ -8,6 +8,7 @@ from langchain.callbacks.manager import CallbackManagerForLLMRun
 from typing import Any, List, Mapping, Optional, Dict
 from openai import OpenAI
 from dotenv import load_dotenv
+from flask import Flask, request, jsonify
 import os
 
 load_dotenv()
@@ -147,3 +148,15 @@ if __name__ == "__main__":
     query = "Wat is het annuleringsbeleid?"
     response = get_response(query)
     print(response)
+
+app = Flask(__name__)
+
+@app.route("/api/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+    query = data.get("query", "")
+    response = get_response(query)
+    return jsonify({"response": response})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
