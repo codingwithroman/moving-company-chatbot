@@ -26,7 +26,20 @@
 .react-chatbot-kit-chat-container {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 23rem;
+    height: 40rem;
+    margin: 0 auto; 
     }
+
+.react-chatbot-kit-chat-inner-container {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(243, 243, 243);
+}
+
+.react-chatbot-kit-chat-message-container {
+    height: 86%;
+}
 
 /* Change user message bubbles */
 .react-chatbot-kit-chat-message-container .react-chatbot-kit-user-chat-message {

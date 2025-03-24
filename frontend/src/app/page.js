@@ -5,6 +5,7 @@ import "react-chatbot-kit/build/main.css";
 import { createChatBotMessage } from "react-chatbot-kit";
 import "react-chatbot-kit/build/main.css";
 import "./chatbot-styles.css";
+import PredefinedOptions from "./pages/PredefinedOptions.js"
 
 
 const botAvatar = 'robot-assistant.png';
@@ -13,11 +14,11 @@ const botAvatar = 'robot-assistant.png';
 const getTimeBasedGreeting = () => {
   const hour = new Date().getHours();
   if (hour < 12 && hour > 4) {
-    return "Goedemorgen"; // Morning
+    return "Goedemorgen"; 
   } else if (hour < 18) {
-    return "Goedemiddag"; // Afternoon
+    return "Goedemiddag"; 
   } else {
-    return "Goedenavond"; // Evening
+    return "Goedenavond"; 
   }
 };
 
@@ -37,7 +38,13 @@ const config = {
           {...props}
         />
       </div>
-  }
+  },
+  widgets: [
+    {
+      widgetName: "options",
+      widgetFunc: (props) => <PredefinedOptions {...props} />,
+    }
+  ]
 };
 
 // MessageParser class
