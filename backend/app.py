@@ -9,6 +9,7 @@ from typing import Any, List, Mapping, Optional, Dict
 from openai import OpenAI
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 
 load_dotenv()
@@ -149,14 +150,24 @@ if __name__ == "__main__":
     response = get_response(query)
     print(response)
 
+
+# Flask server set up
 app = Flask(__name__)
+CORS(app, resources={r"/api/*":{"origins": "*"}})
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
-    data = request.get_json()
-    query = data.get("query", "")
-    response = get_response(query)
-    return jsonify({"response": response})
+    try:
+        data = request.get_json()
+        query = data.get("query", "")
+        if not query:
+            return jsonify({"error": "No query provided"}), 400
+        
+        response = get_response(query)
+        return jsonify({"response": response})
+    except Exception as e:
+        print(f"Error processing chat request: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

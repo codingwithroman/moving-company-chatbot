@@ -62,18 +62,19 @@ class ActionProvider {
 
   async handleMessage(message) {
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: message }),
+        credentials: 'include'
       });
-      
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Server error:", response.status, errorText);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
       const botMessage = this.createChatBotMessage(data.response);
       
@@ -82,8 +83,8 @@ class ActionProvider {
         messages: [...prev.messages, botMessage],
       }));
     } catch (error) {
-      console.error("Full error details:", error);
-      const errorMessage = this.createChatBotMessage(`Fout bij ophalen antwoord: ${error.message}`);
+      console.error("Error fetching response:", error);
+      const errorMessage = this.createChatBotMessage("Sorry, ik heb even geen verbinding. Probeer het later nog eens.");
       this.setState((prev) => ({
         ...prev,
         messages: [...prev.messages, errorMessage],
