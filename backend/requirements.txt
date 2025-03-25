@@ -1,9 +1,9 @@
 flask-cors==5.0.1
 faiss-cpu==1.10.0
-langchain-openai==0.1.6
+langchain-openai==0.0.8
 openai==1.68.2
-langchain-community==0.2.1
-langchain-core==0.1.46  # Change this line to be compatible with langchain-openai
+langchain-community==0.0.16
+langchain-core==0.1.28
 langchain==0.2.1
 python-dotenv==1.0.1
 flask==3.0.3
