@@ -1,16 +1,28 @@
-flask-cors==5.0.1
-faiss-cpu==1.10.0
-langchain-openai==0.1.0
+# Core LangChain stack
+langchain==0.2.1
+langchain-community==0.2.1
+langchain-core==0.2.4
+langchain-openai==0.1.6
+langsmith==0.1.48  # Explicitly added to resolve conflict
+
+# AI/ML dependencies
 openai==1.68.2
-langchain-community==0.1.0
-langchain-core==0.1.30
-langchain==0.1.16
-langsmith==0.1.0
-python-dotenv==1.0.1
+tiktoken==0.9.0
+faiss-cpu==1.10.0
+numpy==1.26.4
+
+# Web server
 flask==3.0.3
+flask-cors==5.0.1
+gunicorn==23.0.0
+gevent==24.2.1
+greenlet==3.0.3
+
+# PDF processing
 pypdf==5.4.0
 PyMuPDF==1.25.4
-tiktoken==0.9.0
+
+# Utilities
+python-dotenv==1.0.1
 protobuf==4.25.3
-numpy==1.26.4
-gunicorn==23.0.0
+Werkzeug==3.0.3
