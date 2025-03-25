@@ -140,11 +140,18 @@ qa_chain = RetrievalQA.from_chain_type(
     return_source_documents=False
 )
 
-# API endpoint simulation
 def get_response(query):
     result = qa_chain.invoke({"query": query})
+
+    response_text = result["result"].replace("opdrachtgever", "jij")  
+    response_text = response_text.replace("de opdrachtgever", "jij") 
+
+    response_text = response_text.replace("de opdrachtnemer", "het verhuisbedrijf")  
+    response_text = response_text.replace("opdrachtnemer", "het verhuisbedrijf")
+
     return result["result"]
 
+# API endpoint simulation
 if __name__ == "__main__":
     query = "Wat is het annuleringsbeleid?"
     response = get_response(query)
