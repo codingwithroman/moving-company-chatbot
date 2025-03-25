@@ -5,7 +5,8 @@ import "react-chatbot-kit/build/main.css";
 import { createChatBotMessage } from "react-chatbot-kit";
 import "react-chatbot-kit/build/main.css";
 import "./chatbot-styles.css";
-import PredefinedOptions from "./pages/PredefinedOptions.js"
+import ReactMarkdown from "react-markdown"
+
 
 
 const botAvatar = 'robot-assistant.png';
@@ -38,13 +39,7 @@ const config = {
           {...props}
         />
       </div>
-  },
-  widgets: [
-    {
-      widgetName: "options",
-      widgetFunc: (props) => <PredefinedOptions {...props} />,
-    }
-  ]
+  }
 };
 
 // MessageParser class
@@ -82,7 +77,9 @@ class ActionProvider {
       }
       
       const data = await response.json();
-      const botMessage = this.createChatBotMessage(data.response);
+      const botMessage = this.createChatBotMessage(
+        <ReactMarkdown>{data.response}</ReactMarkdown>
+      );
       
       this.setState((prev) => ({
         ...prev,
