@@ -1,9 +1,9 @@
 flask-cors==5.0.1
 faiss-cpu==1.10.0
-langchain-openai # Downgraded to match other components
+langchain-openai==0.1.6  # Explicit version to avoid conflicts
 openai==1.68.2
 langchain-community==0.2.1
-langchain-core    # Compatible with community 0.2.1
+langchain-core==0.2.4  # Must match community 0.2.1
 langchain==0.2.1
 python-dotenv==1.0.1
 flask==3.0.3
@@ -12,15 +12,11 @@ PyMuPDF==1.25.4
 tiktoken==0.9.0
 protobuf==4.25.3
 numpy==1.26.4
-gunicorn
+gunicorn==23.0.0
 greenlet==3.0.3
-gevent==24.2.0
+gevent==24.2.1  # Corrected version
 
-# Additional essential packages
-eventlet==0.35.1  # Alternative async worker
-click==8.1.7      # Required by Flask
-itsdangerous==2.2.0  # Security dependency
-Werkzeug==3.0.3   # WSGI utility
-Jinja2==3.1.4     # Templating engine
-MarkupSafe==2.1.5 # HTML escaping
-typing_extensions==4.11.0  # Type hints support
+# Additional critical dependencies
+Werkzeug==3.0.3
+click==8.1.7
+Jinja2==3.1.4
