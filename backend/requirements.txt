@@ -4,7 +4,7 @@ langchain-openai==0.0.8
 openai==1.68.2
 langchain-community==0.0.16
 langchain-core==0.1.28
-langchain==0.2.1
+langchain==0.1.16
 python-dotenv==1.0.1
 flask==3.0.3
 pypdf==5.4.0
@@ -13,8 +13,3 @@ tiktoken==0.9.0
 protobuf==4.25.3
 numpy==1.26.4
 gunicorn==23.0.0
-greenlet==3.0.3
-gevent==24.2.1
-Werkzeug==3.0.3
-click==8.1.7
-Jinja2==3.1.4
